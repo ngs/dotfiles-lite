@@ -1,0 +1,42 @@
+[user]
+  name = Atsushi Nagase
+  email = a@ngs.io
+
+[alias]
+  st = status
+  ci = commit
+  co = checkout
+  sm = submodule
+  pullsm = submodule foreach 'git pull'
+  addorg = remote add origin
+  delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+  pruneall = fetch --all --prune
+  cancel = reset HEAD^
+  seturl = remote set-url
+[core]
+  quotepath = false
+  ignorecase = false
+  excludesfile = ~/.gitignore
+[filter "ident"]
+  smudge = git-expand-ident
+  clean = perl -pe \"s/\\\\\\$(Id|Tree|Parent|Author|Commiter|Log|Date)[^\\\\\\$]*\\\\\\$/\\\\\\$\\${1}\\\\\\$/\"
+[difftool]
+  prompt = false
+[mergetool]
+  keepBackup = true
+[github]
+  user = ngs
+[push]
+  default = matching
+[color]
+  ui = auto
+
+[hub]
+  protocol = https
+
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+

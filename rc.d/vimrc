@@ -1,0 +1,72 @@
+set nocompatible
+filetype off   
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': ['go'] }
+Plug 'nsf/gocode', { 'rtp': 'vim', 'for': ['go'], 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'pangloss/vim-javascript', { 'for': ['js'] }
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+call plug#end()
+
+filetype plugin indent on 
+
+autocmd filetype crontab setlocal nobackup nowritebackup
+
+filetype plugin indent on
+retab
+set autoindent
+set bs=indent,eol,start
+set cmdheight=1
+set expandtab
+set laststatus=1
+set list
+set listchars=tab:>_,trail:\.,nbsp:%,eol:\$
+set notitle
+set number
+set ruler
+set shiftwidth=2
+set showcmd
+set showmatch
+set smartindent
+set t_Co=256
+set tabstop=2
+set title
+syntax enable
+
+
+" =================================================
+" Highlight
+" =================================================
+
+highlight LineNr     ctermfg=darkyellow
+highlight NonText    ctermfg=darkblue   ctermbg=NONE guibg=darkgray
+highlight Folded     ctermfg=blue
+highlight SpecialKey ctermfg=235   ctermbg=NONE
+highlight Pmenu      ctermbg=lightgray  ctermfg=23
+highlight PmenuSel   ctermbg=black      ctermfg=yellow
+highlight PmenuSbar  ctermbg=yellow
+" Zenkaku Space
+highlight ZenkakuSpace cterm=underline ctermfg=darkgray ctermbg=NONE
+match ZenkakuSpace /　/
+" Hankaku Space
+"highlight HankakuSpace cterm=underline ctermfg=darkgray ctermbg=NONE
+"match HankakuSpace /\s/
+
+" =================================================
+" Go
+" =================================================
+let g:go_fmt_command = "goimports"
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+
+" =================================================
+" NERDTree
+" =================================================
+let NERDTreeShowHidden=1
